@@ -1,0 +1,8 @@
+<resources>
+	<string name="app_name">TransitionsDemo</string>
+	<string name="action_settings">Settings</string>
+	<string name="title_activity_simple_transition">SimpleTransitionActivity</string>
+	<string name="transition_title">Transition:title</string>
+	<string name="transition_circle">Transition:circle</string>
+	<string name="title_activity_visible">VisibleActivity</string>
+</resources>

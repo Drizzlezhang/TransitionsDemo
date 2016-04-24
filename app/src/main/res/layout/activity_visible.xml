@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.drizzle.transitionsdemo.VisibleActivity"
+	>
+
+	<ImageView
+		android:id="@+id/visible_circle"
+		android:layout_width="128dp"
+		android:layout_height="128dp"
+		android:src="@drawable/circle_24dp"
+		android:layout_gravity="center"
+		android:transitionName="@string/transition_circle"
+		/>
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/visible_fab1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|end"
+		android:layout_margin="@dimen/fab_margin"
+		/>
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/visible_fab2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|start"
+		android:layout_margin="@dimen/fab_margin"
+		/>
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/visible_fab3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="top|end"
+		android:layout_margin="@dimen/fab_margin"
+		/>
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/visible_fab4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="top|start"
+		android:layout_margin="@dimen/fab_margin"
+		/>
+
+</FrameLayout>
