@@ -23,6 +23,7 @@
 		android:layout_height="wrap_content"
 		android:layout_gravity="bottom|end"
 		android:layout_margin="@dimen/fab_margin"
+		app:elevation="100dp"
 		/>
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/visible_fab2"
@@ -30,17 +31,23 @@
 		android:layout_height="wrap_content"
 		android:layout_gravity="bottom|start"
 		android:layout_margin="@dimen/fab_margin"
-		/>
+		app:elevation="100dp"
+
+	/>
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/visible_fab3"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="top|end"
+		app:elevation="100dp"
+
 		android:layout_margin="@dimen/fab_margin"
 		/>
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/visible_fab4"
 		android:layout_width="wrap_content"
+		app:elevation="100dp"
+
 		android:layout_height="wrap_content"
 		android:layout_gravity="top|start"
 		android:layout_margin="@dimen/fab_margin"

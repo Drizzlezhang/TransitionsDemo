@@ -12,9 +12,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Fade;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import butterknife.Bind;
@@ -33,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
-		setupAnim();
 		setSupportActionBar(mToolbar);
 		initData();
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -44,10 +40,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 	private void initData() {
 		mItemBeanList = new ArrayList<>();
-		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple transition"));
+		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple Transition"));
 		mItemBeanList.add(new ItemBean(Color.YELLOW, "Visible transition"));
 		mItemBeanList.add(new ItemBean(Color.GRAY, "Reveal transition"));
-		mItemBeanList.add(new ItemBean(Color.GREEN, "Custom transition"));
 		mAdapter = new RecyclerAdapter(mItemBeanList, this);
 	}
 
@@ -55,10 +50,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		switch (position) {
 			case 0:
 				Intent simpleIntent = new Intent(this, SimpleTransitionActivity.class);
-				Pair simplePair =
-					new Pair<>(view.findViewById(R.id.item_circle), getString(R.string.transition_circle));
+				//Pair simplePair =
+				//	new Pair<>(view.findViewById(R.id.item_circle), getString(R.string.transition_circle));
+				Pair secondPair = new Pair<>(view.findViewById(R.id.item_title), getString(R.string.transition_title));
 				ActivityOptionsCompat simpleOptions =
-					ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, simplePair);
+					ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, secondPair);
 				ActivityCompat.startActivity(MainActivity.this, simpleIntent, simpleOptions.toBundle());
 				break;
 			case 1:
@@ -79,30 +75,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 			default:
 				break;
 		}
-	}
-
-	@Override public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
-	}
-
-	@Override public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
-
-	private void setupAnim() {
-		Fade fade = new Fade();
-		getWindow().setExitTransition(fade);
 	}
 }

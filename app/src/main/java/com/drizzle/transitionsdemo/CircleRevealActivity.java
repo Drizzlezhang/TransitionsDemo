@@ -74,6 +74,14 @@ public class CircleRevealActivity extends AppCompatActivity {
 			@Override public void onAnimationEnd(Animator animation) {
 				mRevealAnim.removeListener(this);
 				mFab2.setVisibility(View.VISIBLE);
+				mFab2.animate()
+					.scaleX(1F)
+					.scaleY(1F)
+					.setInterpolator(new DecelerateInterpolator())
+					.setListener(new AnimatorListenerAdapter() {
+						@Override public void onAnimationEnd(Animator animation) {
+						}
+					});
 				container.clearAnimation();
 			}
 		});
