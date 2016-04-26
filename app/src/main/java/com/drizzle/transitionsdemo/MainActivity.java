@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		mItemBeanList = new ArrayList<>();
 		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple transition"));
 		mItemBeanList.add(new ItemBean(Color.YELLOW, "Visible transition"));
-		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple transition"));
-		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple transition"));
+		mItemBeanList.add(new ItemBean(Color.GRAY, "Reveal transition"));
+		mItemBeanList.add(new ItemBean(Color.GREEN, "Custom transition"));
 		mAdapter = new RecyclerAdapter(mItemBeanList, this);
 	}
 
@@ -68,6 +68,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 				ActivityOptionsCompat visibleOptions =
 					ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, visiblePair);
 				ActivityCompat.startActivity(MainActivity.this, visibleIntent, visibleOptions.toBundle());
+				break;
+			case 2:
+				Intent revealIntent = new Intent(this, CircleRevealActivity.class);
+				startActivity(revealIntent);
+				break;
+			case 3:
+
 				break;
 			default:
 				break;
@@ -94,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void setupAnim(){
+	private void setupAnim() {
 		Fade fade = new Fade();
 		getWindow().setExitTransition(fade);
 	}

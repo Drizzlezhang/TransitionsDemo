@@ -27,19 +27,22 @@ public class VisibleActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_visible);
 		ButterKnife.bind(this);
+		mImageView.setImageTintList(ColorStateList.valueOf(Color.YELLOW));
+
 		Explode explode = new Explode();
 		explode.addTarget(fab3);
 		explode.addTarget(fab4);
 		explode.setInterpolator(new DecelerateInterpolator());
+
 		Slide slide = new Slide(Gravity.BOTTOM);
 		slide.addTarget(fab1);
 		slide.addTarget(fab2);
 		slide.setInterpolator(new BounceInterpolator());
+
 		TransitionSet set = new TransitionSet();
 		set.addTransition(explode);
 		set.addTransition(slide);
 		getWindow().setEnterTransition(set);
-		mImageView.setImageTintList(ColorStateList.valueOf(Color.YELLOW));
 	}
 
 	@Override public void onBackPressed() {
