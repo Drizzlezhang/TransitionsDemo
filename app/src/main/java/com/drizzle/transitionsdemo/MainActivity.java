@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	@Bind(R.id.toolbar) Toolbar mToolbar;
 	private RecyclerAdapter mAdapter;
 	private List<ItemBean> mItemBeanList;
+	private FragmentTransaction transation;
+	private TransitionFragment fragment;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,9 +43,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 	private void initData() {
 		mItemBeanList = new ArrayList<>();
-		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple Transition"));
+		mItemBeanList.add(new ItemBean(Color.BLUE, "Simple transition"));
 		mItemBeanList.add(new ItemBean(Color.YELLOW, "Visible transition"));
 		mItemBeanList.add(new ItemBean(Color.GRAY, "Reveal transition"));
+		mItemBeanList.add(new ItemBean(Color.RED, "Fragment transition"));
 		mAdapter = new RecyclerAdapter(mItemBeanList, this);
 	}
 
@@ -50,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		switch (position) {
 			case 0:
 				Intent simpleIntent = new Intent(this, SimpleTransitionActivity.class);
-				//Pair simplePair =
-				//	new Pair<>(view.findViewById(R.id.item_circle), getString(R.string.transition_circle));
-				Pair secondPair = new Pair<>(view.findViewById(R.id.item_title), getString(R.string.transition_title));
+				Pair simplePair =
+					new Pair<>(view.findViewById(R.id.item_circle), getString(R.string.transition_circle));
+				//Pair secondPair = new Pair<>(view.findViewById(R.id.item_title), getString(R.string.transition_title));
 				ActivityOptionsCompat simpleOptions =
-					ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, secondPair);
+					ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, simplePair);
 				ActivityCompat.startActivity(MainActivity.this, simpleIntent, simpleOptions.toBundle());
 				break;
 			case 1:
@@ -70,10 +74,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 				startActivity(revealIntent);
 				break;
 			case 3:
-
+				fragment = TransitionFragment.newInstance();
+				transation = getSupportFragmentManager().beginTransaction();
+				transation.addSharedElement(view.findViewById(R.id.item_circle), getString(R.string.transition_circle));
+				transation.replace(R.id.main_container, fragment);
+				transation.addToBackStack("tag");
+				transation.commit();
 				break;
 			default:
 				break;
 		}
+	}
+
+	@Override public void onBackPressed() {
+		getSupportFragmentManager().popBackStack();
 	}
 }

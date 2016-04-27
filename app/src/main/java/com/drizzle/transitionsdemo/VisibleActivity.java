@@ -41,12 +41,6 @@ public class VisibleActivity extends AppCompatActivity {
 		//set.addTransition(slide);
 		//set.addTransition(fade);
 		ScaleX scaleX = new ScaleX();
-		scaleX.addTarget(fab1);
-		scaleX.addTarget(fab2);
-		scaleX.addTarget(fab3);
-		scaleX.addTarget(fab4);
-		scaleX.setDuration(10000);
-
 		getWindow().setEnterTransition(scaleX);
 		getWindow().setExitTransition(scaleX);
 		getWindow().setReenterTransition(scaleX);
